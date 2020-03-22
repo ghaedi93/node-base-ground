@@ -8,9 +8,10 @@ const application = {
       app.use(express.static("public"));
       //parse incoming requests with bodyParser
       app.use(bodyParser.json());
+      //creates an app in global scope of applicaton
       global.app = app;
-      resolve();
       console.log("starting application...");
+      resolve();
     });
   }
 };
