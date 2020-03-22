@@ -1,21 +1,25 @@
-const mongoDb = {
-  start: () => {
-    return new Promise(resolve => {
-      const mongoose = require("mongoose");
-      const { mongoUrl } = require("../config");
-      mongoose.set("useNewUrlParser", true);
-      mongoose.set("useFindAndModify", false);
-      mongoose.set("useCreateIndex", true);
-      mongoose.set("useUnifiedTopology", true);
+const mongoose = require("mongoose");
+const { mongoUrl } = require("../config");
+mongoose.set("useNewUrlParser", true);
+mongoose.set("useFindAndModify", false);
+mongoose.set("useCreateIndex", true);
+mongoose.set("useUnifiedTopology", true);
 
-      mongoose
-        .connect(mongoUrl)
-        .then(() => {
-          console.log(`Connecting to ${mongoUrl} as mongo database ...`);
-          resolve();
-        })
-        .catch(err => console.log(err));
-    });
-  }
-};
-module.exports = mongoDb;
+function connect() {
+  return new Promise(resolve => {
+    mongoose
+      .connect(mongoUrl)
+      .then(() => {
+        console.log(`Connecting to ${mongoUrl} as mongo database ...`);
+        resolve();
+      })
+      .catch(err => console.log(err));
+  });
+}
+
+function close() {
+  return new Promise(resolve => {
+    mongoose.disconnect();
+  });
+}
+module.exports = mongoDb = { connect, close };
