@@ -7,7 +7,8 @@ async function server() {
   await mongoDb.connect();
   //starting application and making the global app variable
   await application.start();
-
+  await application.addRoutes();
+  await application.addAthentication();
   app.listen(PORT, () => {
     console.log(`starting server on port ${PORT}...`);
   });
