@@ -1,0 +1,19 @@
+{
+  "name": "startingpoint_server_database",
+  "version": "1.0.0",
+  "description": "a simple server connecting to db",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "javad ghaedi",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "startingPoint_server_database"
+  },
+  "keywords": [
+    "server",
+    "database"
+  ]
+}
