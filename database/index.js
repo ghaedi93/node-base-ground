@@ -8,7 +8,7 @@ const mongoDb = {
       mongoose.set("useCreateIndex", true);
       mongoose.set("useUnifiedTopology", true);
 
-      const startConnection = mongoose
+      mongoose
         .connect(mongoUrl)
         .then(() => {
           console.log(`Connecting to ${mongoUrl} as mongo database ...`);
