@@ -1,6 +1,12 @@
-const app = require("./src");
+const application = require("./src");
 const { PORT } = require("./config");
-const startConnection = require("./database");
-app.listen(PORT, () => {
-  console.log(`starting server on port ${PORT}`);
-});
+const mongoDb = require("./database");
+
+async function server() {
+  await mongoDb.start();
+  await application.start();
+  app.listen(PORT, () => {
+    console.log(`starting server on port ${PORT}...`);
+  });
+}
+server();
